@@ -53,7 +53,8 @@ def test_a_decision_blocks_the_draft_and_the_commit(table):
 
     assert draft.blockers, "בקשה שסותרת החלטה חייבת להיחסם"
     before = len(client.created_by_agent())
-    _, problem = planning.commit(book, client, draft.id)
+    _, problem, written = planning.commit(book, client, draft.id)
+    assert written is False
     assert "חסומה" in problem
     assert len(client.created_by_agent()) == before, "חסימה פירושה שלא נכתב כלום"
 
@@ -76,7 +77,8 @@ def test_commit_writes_tasks_owners_and_links(table):
          "due_date": "2026-11-26", "project_id": 2},
     ], links=[{"predecessor": "202", "successor": "d1"}])
 
-    committed, problem = planning.commit(book, client, draft.id)
+    committed, problem, written = planning.commit(book, client, draft.id)
+    assert written is True
     assert problem == ""
     assert len(committed.committed) == 1
     created = client.created_by_agent()[0]
@@ -90,7 +92,8 @@ def test_a_draft_cannot_be_committed_twice(table):
         {"title": "משימה", "owners": ["רחל כהן"], "due_date": "2026-11-26"},
     ])
     planning.commit(book, client, draft.id)
-    _, problem = planning.commit(book, client, draft.id)
+    _, problem, written = planning.commit(book, client, draft.id)
+    assert written is False
     assert "כבר נכתבה" in problem
 
 

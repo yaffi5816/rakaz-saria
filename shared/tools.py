@@ -142,11 +142,13 @@ def commit_plan(ctx: Context, args: dict) -> str:
     draft_id = args.get("draft_id")
     if not draft_id:
         raise ToolError("צריך draft_id")
-    draft, problem = planning.commit(ctx.book, ctx.client, draft_id)
+    draft, problem, written = planning.commit(ctx.book, ctx.client, draft_id)
     if draft is None:
         raise ToolError(problem)
     if draft.blockers:
         raise ToolError(problem + "\nהפתרון הוא לשנות את הטיוטה או לבטל את ההחלטה במפורש.")
+    if not written:
+        raise ToolError(problem)
     created = ",".join(str(i) for i in draft.committed)
     tail = f"\nתלויות שלא נוצרו:\n{problem}" if problem else ""
     return f"נוצרו {len(draft.committed)} משימות: {created}{tail}"
@@ -389,7 +391,8 @@ _SYSTEM_TEMPLATE = """אתה "רכז" - עוזר ניהולי של מנהלת א
 כללים:
 - כשהמשתמש מספר לך כלל עבודה או החלטה - תשמור אותו ב-remember מיד.
 - החלטה שקובעת שלא מתחילים משהו לפני תאריך חייבת guard_date, אחרת היא לא תיאכף.
-- לפני שאתה מתכנן משימה בנושא שיש עליו כלל שמור - תשתמש בו, גם אם לא ביקשו ממך.
+- לפני שאתה מתכנן משימה בנושא כלשהו - בדוק ב-recall אם יש עליו כלל או החלטה
+  שמורים, והחל אותם גם אם לא ביקשו ממך.
 - בקשה שסותרת החלטה שמורה: תגיד מה ההחלטה, מתי נרשמה, ואל תעקוף אותה.
 - אתה רואה רק מה שהמשתמשת רשאית לראות. אם משהו לא נמצא, אמור זאת.
 - תשובות קצרות, בעברית, בלי לחזור על מה שהכלי כבר הדפיס."""

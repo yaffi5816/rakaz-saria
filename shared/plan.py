@@ -193,19 +193,24 @@ def build(book: DraftBook, calendar, memory, client, tasks: list[dict],
     return draft
 
 
-def commit(book: DraftBook, client, draft_id: str) -> tuple[Draft | None, str]:
+def commit(book: DraftBook, client, draft_id: str) -> tuple[Draft | None, str, bool]:
     """Write a draft to the workspace, unless something says it must not be.
 
-    Output: the draft and an empty string on success, or the draft (or None)
-    and the reason it was refused.
+    Output: the draft, a problem description, and whether anything was written.
+
+    The third value exists because the first two cannot tell two opposite
+    outcomes apart. "Four tasks were created but one dependency failed" and
+    "nothing was created, this draft was already committed" both come back as a
+    draft plus a non-empty string, and a caller reading only those two reports
+    the second as a success.
     """
     draft = book.get(draft_id)
     if draft is None:
-        return None, f"אין טיוטה בשם {draft_id}"
+        return None, f"אין טיוטה בשם {draft_id}", False
     if draft.committed:
-        return draft, f"הטיוטה {draft_id} כבר נכתבה: {draft.committed}"
+        return draft, f"הטיוטה {draft_id} כבר נכתבה קודם: {draft.committed}", False
     if draft.blockers:
-        return draft, "הטיוטה חסומה:\n" + "\n".join(draft.blockers)
+        return draft, "הטיוטה חסומה:\n" + "\n".join(draft.blockers), False
 
     created: dict[str, int] = {}
     for task in draft.tasks:
@@ -235,7 +240,7 @@ def commit(book: DraftBook, client, draft_id: str) -> tuple[Draft | None, str]:
 
     draft.committed = list(created.values())
     book.put(draft)
-    return draft, "\n".join(failures)
+    return draft, "\n".join(failures), True
 
 
 def render(draft: Draft) -> str:

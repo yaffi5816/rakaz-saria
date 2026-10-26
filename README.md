@@ -33,7 +33,8 @@ python API/main.py --scenario scenario.json --out results/api.json
 
 גרסת ה-SDK רצה על ה-login שלך ב-Claude Code, וחייבת טרמינל שבו המפתח **לא**
 מוגדר — אחרת החיוב עובר למפתח. `SDK/main.py` נופל עם הודעה ברורה אם הוא מוצא
-אותו:
+אותו. (התיעוד של ה-SDK מדבר על `ANTHROPIC_API_KEY` ולא מאשר במפורש נפילה חזרה
+ל-login; אם הריצה הראשונה תתלונן על אימות, זה המקום לבדוק.)
 
 ```bash
 unset ANTHROPIC_API_KEY
