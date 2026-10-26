@@ -153,7 +153,7 @@ harnesses ולא בין שני סוכנים.
 ## איך לשחזר את המספרים
 
 ```bash
-python -m pytest tests/ -q                                  # 31 בדיקות, בלי מפתח ובלי רשת
+python -m pytest tests/ -q                                  # 37 בדיקות, בלי מפתח ובלי רשת
 export ANTHROPIC_API_KEY=sk-ant-...
 python API/main.py --scenario scenario.json --out results/api.json
 unset ANTHROPIC_API_KEY

@@ -44,21 +44,22 @@ python SDK/main.py --scenario scenario.json --out results/sdk.json
 הבדיקות רצות offline, בלי מפתח ובלי רשת:
 
 ```bash
-python -m pytest tests/ -q
+python -m pytest tests/ -q    # 37 בדיקות
 ```
 
 ## מה הסוכן יודע לעשות
 
-שמונה כלים, מוגדרים פעם אחת ב-`shared/tools.py` ונצרכים על ידי שתי הגרסאות:
+תשעה כלים, מוגדרים פעם אחת ב-`shared/tools.py` ונצרכים על ידי שתי הגרסאות:
 
 | כלי | מה הוא עושה |
 |---|---|
+| `read_transcript` | **קבצים**: קורא תמלול ישיבה (vtt/txt/md) ומסיר חותמות זמן |
 | `search_workspace` | משימות, פרויקטים ואנשים — מוגבל למה שהמשתמשת רשאית לראות |
 | `workload` | כמה משימות פתוחות ובאיחור יש לכל אדם |
 | `calendar_check` | **חיצוני**: hebcal.com — שבת, חג, ויום העבודה הקרוב |
 | `history_stats` | כמה זמן באמת לקחו בעבר משימות דומות |
 | `draft_plan` | מכין טיוטה, לא כותב כלום |
-| `commit_plan` | כותב — ונחסם אם הטיוטה סותרת החלטה שמורה |
+| `commit_plan` | כותב רק את המשימות שאושרו בשמן, אחת-אחת |
 | `remember` | שומר כלל עבודה או החלטה ניהולית |
 | `recall` | שולף את מה ששמור בנושא מסוים |
 
@@ -69,7 +70,8 @@ memory/profile.md          איך האגף עובד — קבוע, נכנס לכ�
 memory/conventions.jsonl   כללים והחלטות, append-only. ביטול מוסיף שורה
 state/workspace.db         עותק מזורע של מערכת המשימות
 state/history/*.jsonl      התמליל של כל סשן, append-only
-state/drafts.json          טיוטות שממתינות לאישור
+state/drafts.json          טיוטות, עם סטטוס אישור לכל משימה בנפרד
+shared/fixtures/meetings/  תמלולי ישיבות לקריאה
 ```
 
 ## מרחב העבודה

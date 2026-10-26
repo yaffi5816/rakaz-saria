@@ -60,7 +60,7 @@ def test_an_unknown_tool_does_not_end_the_run(ctx):
 def test_every_shared_tool_is_offered():
     names = [schema["name"] for schema in harness_tools.schemas()]
     assert names == harness_tools.ALLOWED
-    assert len(names) == 8
+    assert len(names) == 9
 
 
 # ── loop.py ──────────────────────────────────────────────────────────

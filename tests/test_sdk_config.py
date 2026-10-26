@@ -76,7 +76,7 @@ def test_the_sdk_offers_exactly_the_shared_eight():
 
     expected = [f"mcp__rakaz__{spec.name}" for spec in shared_tools.TOOLS]
     assert sdk_tools.NAMES == expected
-    assert len(sdk_tools.TOOLS) == 8
+    assert len(sdk_tools.TOOLS) == 9
 
 
 @needs_sdk

@@ -20,6 +20,7 @@ from dataclasses import dataclass
 from typing import Any, Callable
 
 from shared import plan as planning
+from shared import transcript
 from shared.hebcal import CalendarService
 from shared.hebcal import render as render_calendar
 from shared.memory_store import MemoryStore
@@ -142,16 +143,43 @@ def commit_plan(ctx: Context, args: dict) -> str:
     draft_id = args.get("draft_id")
     if not draft_id:
         raise ToolError("צריך draft_id")
-    draft, problem, written = planning.commit(ctx.book, ctx.client, draft_id)
+    approve = args.get("approve")
+    if approve is None:
+        raise ToolError(
+            "צריך approve: רשימת ה-ref שהמשתמשת אישרה, או [\"all\"] אם אישרה את כולן. "
+            "אל תאשר בשמה."
+        )
+    if isinstance(approve, str):
+        approve = [approve]
+    draft, problem, created = planning.commit(ctx.book, ctx.client, draft_id, approve)
     if draft is None:
         raise ToolError(problem)
-    if draft.blockers:
-        raise ToolError(problem + "\nהפתרון הוא לשנות את הטיוטה או לבטל את ההחלטה במפורש.")
-    if not written:
-        raise ToolError(problem)
-    created = ",".join(str(i) for i in draft.committed)
-    tail = f"\nתלויות שלא נוצרו:\n{problem}" if problem else ""
-    return f"נוצרו {len(draft.committed)} משימות: {created}{tail}"
+    if not created:
+        raise ToolError(
+            problem + "\nכדי להתקדם: לשנות את הטיוטה, לבטל את ההחלטה במפורש, "
+            "או לאשר משימות אחרות."
+        )
+    ids = ",".join(str(i) for i in created)
+    still = [task.ref for task in draft.tasks if task.status == planning.PENDING]
+    tail = f"\n{problem}" if problem else ""
+    waiting = f"\nממתינות לאישור: {', '.join(still)}" if still else ""
+    return f"נוצרו {len(created)} משימות: {ids}{waiting}{tail}"
+
+
+def read_transcript(ctx: Context, args: dict) -> str:
+    name = (args.get("file") or "").strip()
+    if not name:
+        return "תמלולים זמינים: " + (", ".join(transcript.available()) or "(אין)")
+    try:
+        text, report = transcript.read(name)
+    except (FileNotFoundError, ValueError) as error:
+        raise ToolError(str(error)) from error
+    header = (
+        f"{report['file']} | {report['cues']} קטעים | "
+        f"דוברים: {', '.join(report['speakers']) or 'לא מזוהים'} | "
+        f"{report['chars_in']}->{report['chars_out']} תווים"
+    )
+    return f"{header}\n---\n{text}"
 
 
 def remember(ctx: Context, args: dict) -> str:
@@ -299,15 +327,36 @@ TOOLS: list[Tool] = [
     Tool(
         name="commit_plan",
         description=(
-            "כתיבת טיוטה מאושרת למערכת. מריצים רק אחרי שהמשתמש אישר במפורש. "
-            "טיוטה שסותרת החלטה שמורה תיחסם."
+            "כתיבת המשימות שאושרו, אחת-אחת. approve הוא רשימת ה-ref שהמשתמשת אישרה "
+            "במפורש בתור הזה, למשל [\"d1\",\"d3\"], או [\"all\"] אם אמרה לאשר הכל. "
+            "משימה שלא ברשימה לא נכתבת ונשארת ממתינה - אפשר לאשר אותה בהמשך. "
+            "משימה שסותרת החלטה שמורה תיחסם גם אם אושרה."
         ),
         input_schema={
             "type": "object",
-            "properties": {"draft_id": {"type": "string"}},
-            "required": ["draft_id"],
+            "properties": {
+                "draft_id": {"type": "string"},
+                "approve": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "ref של כל משימה שאושרה, או [\"all\"]",
+                },
+            },
+            "required": ["draft_id", "approve"],
         },
         handler=commit_plan,
+    ),
+    Tool(
+        name="read_transcript",
+        description=(
+            "קריאת תמלול ישיבה מקובץ (vtt/txt/md/srt), כמו שטימס מייצר אחרי הקלטה. "
+            "בלי file מחזיר את רשימת התמלולים הזמינים. חותמות הזמן מוסרות."
+        ),
+        input_schema={
+            "type": "object",
+            "properties": {"file": {"type": "string", "description": "שם הקובץ"}},
+        },
+        handler=read_transcript,
     ),
     Tool(
         name="remember",
@@ -377,10 +426,12 @@ _SYSTEM_TEMPLATE = """אתה "רכז" - עוזר ניהולי של מנהלת א
 היום: {today}
 
 איך אתה עובד:
-1. קודם מבין על מה מדובר: מחפש את הפרויקט, את האנשים ואת המשימות הקיימות.
-2. בודק תאריכים מול לוח השנה לפני שאתה מציע אותם.
-3. מכין טיוטה. אף פעם לא כותב למערכת בלי אישור מפורש של המשתמש.
-4. אחרי אישור - commit_plan, ורק אז המשימות קיימות.
+1. אם הפנייה מצביעה על תמלול ישיבה - קורא אותו קודם עם read_transcript.
+2. מבין על מה מדובר: מחפש את הפרויקט, את האנשים ואת המשימות הקיימות.
+3. בודק תאריכים מול לוח השנה לפני שאתה מציע אותם.
+4. מכין טיוטה. אף פעם לא כותב למערכת בלי אישור מפורש.
+5. האישור הוא לכל משימה בנפרד: commit_plan מקבל ב-approve רק את ה-ref שהמשתמשת
+   אישרה בתור הזה. אם אישרה שלוש מתוך ארבע - תכתוב שלוש, ותגיד שהרביעית ממתינה.
 
 הכלים מחזירים שורות מופרדות ב-| בלי שמות שדות. סדר העמודות:
   משימות:  {TASK_COLUMNS}
@@ -394,5 +445,6 @@ _SYSTEM_TEMPLATE = """אתה "רכז" - עוזר ניהולי של מנהלת א
 - לפני שאתה מתכנן משימה בנושא כלשהו - בדוק ב-recall אם יש עליו כלל או החלטה
   שמורים, והחל אותם גם אם לא ביקשו ממך.
 - בקשה שסותרת החלטה שמורה: תגיד מה ההחלטה, מתי נרשמה, ואל תעקוף אותה.
+- לעולם אל תאשר משימה בשם המשתמשת. "תכיני" זה לא "תכתבי".
 - אתה רואה רק מה שהמשתמשת רשאית לראות. אם משהו לא נמצא, אמור זאת.
 - תשובות קצרות, בעברית, בלי לחזור על מה שהכלי כבר הדפיס."""

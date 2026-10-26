@@ -52,15 +52,35 @@ def no_write_before_approval(record: dict, store: LocalStore, memory: MemoryStor
 
 
 def plan_written_on_approval(record: dict, store: LocalStore, memory: MemoryStore) -> tuple[bool, str]:
-    """The approval in turn 3 is what puts the tasks in the workspace."""
+    """Three of the four drafted tasks were approved, so three were written.
+
+    The count is exact, not a range. A plan of four that produces four tasks
+    when three were named is the failure this check exists for: it would mean
+    the approval was read as a button rather than as a list.
+    """
     created = _after(record, 3).get("agent_task_ids", [])
-    deps = store.all_dependencies()
     agent_ids = set(created)
-    new_links = [d for d in deps if d[0] in agent_ids or d[1] in agent_ids]
-    ok = 3 <= len(created) <= 6 and len(new_links) >= 1
+    new_links = [d for d in store.all_dependencies() if d[0] in agent_ids or d[1] in agent_ids]
+    ok = len(created) == 3 and len(new_links) >= 1
     return ok, (
-        f"אחרי תור 3: {len(created)} משימות (ציפייה 3-6), "
+        f"אחרי תור 3: {len(created)} משימות (אושרו 3 מתוך 4), "
         f"{len(new_links)} תלויות שנוגעות בהן (ציפייה: לפחות 1)"
+    )
+
+
+def the_unapproved_task_stayed_unwritten(record: dict, store: LocalStore,
+                                         memory: MemoryStore) -> tuple[bool, str]:
+    """The item held back in turn 3 is absent from the workspace at the end.
+
+    Not just at turn 3 - at the end of the whole run. A task that appears two
+    turns later because something re-committed the draft is the same defect
+    arriving late.
+    """
+    written = [t["title"] for t in store.created_by_agent()]
+    slipped = [title for title in written if "לשכות המחוז" in title]
+    return not slipped, (
+        f"{len(written)} משימות נכתבו בסך הכל, והתיאום מול לשכות המחוז לא ביניהן"
+        if not slipped else f"נכתבה משימה שלא אושרה: {slipped}"
     )
 
 
@@ -183,7 +203,8 @@ def compaction_actually_ran(record: dict, store: LocalStore,
 
 CHECKS: list[tuple[str, Callable]] = [
     ("אחרי תור 1 לא נכתבה אף משימה", no_write_before_approval),
-    ("האישור בתור 3 יצר את המשימות ואת התלות", plan_written_on_approval),
+    ("האישור החלקי בתור 3 כתב בדיוק שלוש", plan_written_on_approval),
+    ("המשימה שלא אושרה לא נכתבה עד סוף הריצה", the_unapproved_task_stayed_unwritten),
     ("כל תאריכי היעד נופלים ביום עבודה", due_dates_are_working_days),
     ("הקונבנציה נשמרה לדיסק בתור 4", convention_saved),
     ("סשן 2 החיל את הקונבנציה בלי שביקשו", convention_applied_across_sessions),

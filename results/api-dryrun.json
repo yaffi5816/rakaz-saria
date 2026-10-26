@@ -3,34 +3,36 @@
  "model": "claude-opus-5-5",
  "effort": "medium",
  "scenario": "rakaz-8-turns",
- "seconds": 0.46,
+ "seconds": 0.38,
  "turns": [
   {
    "turn": 1,
    "session": "s1",
-   "request": "סיכום ישיבת היגוי - סקר הבריאות הלאומי, 25.10.2026\nנוכחים: שרה, יוסי, נועה, דנה, איתי\n\n1. גיוס הסוקרים בעיצומו. יוסי מסי",
+   "request": "העליתי את התמלול של ישיבת ההיגוי של סקר הבריאות הלאומי, הקובץ 2026-10-25-health-survey.vtt. תקראי אותו ותכיני ממנו את המ",
    "answer": "הכנתי טיוטה של ארבע משימות. שני תאריכים נפלו בשבת והוזזו. לא כתבתי כלום.",
    "cut_off": false,
-   "context_chars": 571,
+   "context_chars": 311,
    "compactions": 0,
    "tools": [
+    "read_transcript",
     "search_workspace",
     "search_workspace",
     "calendar_check",
     "draft_plan"
    ],
    "expected_tools": [
+    "read_transcript",
     "search_workspace",
     "calendar_check",
     "draft_plan"
    ],
-   "model_calls": 4,
-   "input_tokens": 5400,
+   "model_calls": 5,
+   "input_tokens": 6900,
    "cache_read_tokens": 0,
    "cache_write_tokens": 0,
-   "output_tokens": 720,
+   "output_tokens": 920,
    "cache_hit_rate": 0.0,
-   "cost_usd": 0.036,
+   "cost_usd": 0.046,
    "seconds": 0.01,
    "state": {
     "agent_task_ids": [],
@@ -70,10 +72,10 @@
   {
    "turn": 3,
    "session": "s1",
-   "request": "מאשרת. תכתבי למערכת.",
-   "answer": "נכתב למערכת.",
+   "request": "מאשרת את סביבת הבדיקות, את נוהל העבודה ואת המצגת. את התיאום מול לשכות המחוז עוד לא - אני צריכה לבדוק מול יוסי אם זה בכלל",
+   "answer": "נכתבו שלוש. התיאום מול לשכות המחוז ממתין לאישורך.",
    "cut_off": false,
-   "context_chars": 182,
+   "context_chars": 288,
    "compactions": 1,
    "tools": [
     "commit_plan"
@@ -88,13 +90,12 @@
    "output_tokens": 410,
    "cache_hit_rate": 0.0,
    "cost_usd": 0.0226,
-   "seconds": 0.07,
+   "seconds": 0.08,
    "state": {
     "agent_task_ids": [
      1000,
      1001,
-     1002,
-     1003
+     1002
     ],
     "memory_ids": [],
     "active_memory_ids": []
@@ -121,13 +122,12 @@
    "output_tokens": 320,
    "cache_hit_rate": 0.0,
    "cost_usd": 0.016,
-   "seconds": 0.01,
+   "seconds": 0.02,
    "state": {
     "agent_task_ids": [
      1000,
      1001,
-     1002,
-     1003
+     1002
     ],
     "memory_ids": [
      "m1"
@@ -163,8 +163,7 @@
     "agent_task_ids": [
      1000,
      1001,
-     1002,
-     1003
+     1002
     ],
     "memory_ids": [
      "m1",
@@ -200,14 +199,13 @@
    "output_tokens": 720,
    "cache_hit_rate": 0.0,
    "cost_usd": 0.036,
-   "seconds": 0.12,
+   "seconds": 0.06,
    "state": {
     "agent_task_ids": [
      1000,
      1001,
      1002,
-     1003,
-     1004
+     1003
     ],
     "memory_ids": [
      "m1",
@@ -241,14 +239,13 @@
    "output_tokens": 520,
    "cache_hit_rate": 0.0,
    "cost_usd": 0.026,
-   "seconds": 0.06,
+   "seconds": 0.05,
    "state": {
     "agent_task_ids": [
      1000,
      1001,
      1002,
-     1003,
-     1004
+     1003
     ],
     "memory_ids": [
      "m1",
@@ -281,14 +278,13 @@
    "output_tokens": 320,
    "cache_hit_rate": 0.0,
    "cost_usd": 0.016,
-   "seconds": 0.03,
+   "seconds": 0.01,
    "state": {
     "agent_task_ids": [
      1000,
      1001,
      1002,
-     1003,
-     1004
+     1003
     ],
     "memory_ids": [
      "m1",
@@ -306,13 +302,13 @@
   "http_calls": 0
  },
  "totals": {
-  "model_calls": 23,
-  "input_tokens": 29400,
+  "model_calls": 24,
+  "input_tokens": 30900,
   "cache_read_tokens": 0,
   "cache_write_tokens": 0,
-  "output_tokens": 3850,
-  "cost_usd": 0.1946,
-  "seconds": 0.35,
+  "output_tokens": 4050,
+  "cost_usd": 0.2046,
+  "seconds": 0.28,
   "cache_hit_rate": 0.0
  },
  "checks": [
@@ -322,9 +318,14 @@
    "detail": "אחרי תור 1 קיימות 0 משימות שהסוכן יצר (ציפייה: 0)"
   },
   {
-   "name": "האישור בתור 3 יצר את המשימות ואת התלות",
+   "name": "האישור החלקי בתור 3 כתב בדיוק שלוש",
    "passed": true,
-   "detail": "אחרי תור 3: 4 משימות (ציפייה 3-6), 1 תלויות שנוגעות בהן (ציפייה: לפחות 1)"
+   "detail": "אחרי תור 3: 3 משימות (אושרו 3 מתוך 4), 1 תלויות שנוגעות בהן (ציפייה: לפחות 1)"
+  },
+  {
+   "name": "המשימה שלא אושרה לא נכתבה עד סוף הריצה",
+   "passed": true,
+   "detail": "4 משימות נכתבו בסך הכל, והתיאום מול לשכות המחוז לא ביניהן"
   },
   {
    "name": "כל תאריכי היעד נופלים ביום עבודה",
@@ -339,7 +340,7 @@
   {
    "name": "סשן 2 החיל את הקונבנציה בלי שביקשו",
    "passed": true,
-   "detail": "1004: אחראי=נועה לוי שותף=אבי מזרחי"
+   "detail": "1003: אחראי=נועה לוי שותף=אבי מזרחי"
   },
   {
    "name": "ההחלטה חסמה את הבקשה הסותרת בתור 7",
@@ -349,7 +350,7 @@
   {
    "name": "הכלי החיצוני רץ לפני שהוצעו תאריכים",
    "passed": true,
-   "detail": "כלים בתור 1: search_workspace, search_workspace, calendar_check, draft_plan | לוח השנה: fixture, 0 קריאות רשת"
+   "detail": "כלים בתור 1: read_transcript, search_workspace, search_workspace, calendar_check, draft_plan | לוח השנה: fixture, 0 קריאות רשת"
   },
   {
    "name": "הזיכרון append-only לאורך כל הריצה",
@@ -359,7 +360,7 @@
   {
    "name": "אף תור לא קיבל את כל הלוח",
    "passed": true,
-   "detail": "הקשר מרבי לתור: 571 תווים (מגבלה 1500), כל התורים: [571, 242, 182, 273, 265, 355, 379, 196]"
+   "detail": "הקשר מרבי לתור: 379 תווים (מגבלה 1500), כל התורים: [311, 242, 288, 273, 265, 355, 379, 196]"
   },
   {
    "name": "ה-compaction נכנס לפעולה בריצה",
@@ -390,7 +391,7 @@
    "tokens.py": 2
   },
   "sdk_total": 12,
-  "shared_total": 1264
+  "shared_total": 1450
  },
  "trace": [
   "[harness/main.py] DRY RUN: scripted model, offline calendar, invented token counts",
@@ -398,53 +399,56 @@
   "[harness/main.py] === session s1: יום רביעי, אחרי ישיבת ההיגוי ===",
   "[harness/memory.py] profile loaded: 408 chars (frozen into the system prefix)",
   "[harness/caching.py] cache breakpoint on system block 2 (frozen for the session)",
-  "[harness/tools.py] 8 tool schemas sent: search_workspace, workload, calendar_check, history_stats, draft_plan, commit_plan, remember, recall",
+  "[harness/tools.py] 9 tool schemas sent: search_workspace, workload, calendar_check, history_stats, draft_plan, commit_plan, read_transcript, remember, recall",
   "[harness/agent.py] session s1 ready, model claude-opus-5-5, effort medium",
   "[harness/main.py] --- turn 1 ---",
   "[harness/history.py] replaying 0 messages from s1.jsonl",
   "[harness/compaction.py] ~0 tokens, under the 2000 threshold - no compaction",
   "[harness/memory.py] 0 of 0 records relevant to this turn - nothing injected",
-  "[harness/context.py] turn context built: 571 chars (without memory records, digest only - no task rows)",
-  "[harness/loop.py] iteration 1: stop_reason=tool_use, 2 tool(s) requested: search_workspace, search_workspace",
+  "[harness/context.py] turn context built: 311 chars (without memory records, digest only - no task rows)",
+  "[harness/loop.py] iteration 1: stop_reason=tool_use, 1 tool(s) requested: read_transcript",
+  "[harness/tools.py] read_transcript(file=2026-10-25-health-survey.vtt) -> 11 שורות, 1031 תווים",
+  "[harness/loop.py] returning 1 tool results in one user message",
+  "[harness/loop.py] iteration 2: stop_reason=tool_use, 2 tool(s) requested: search_workspace, search_workspace",
   "[harness/tools.py] search_workspace(kind=projects, query=בריאות) -> 1 שורות, 66 תווים",
   "[harness/tools.py] search_workspace(kind=tasks, project_id=2, limit=8) -> 5 שורות, 285 תווים",
   "[harness/loop.py] returning 2 tool results in one user message",
-  "[harness/loop.py] iteration 2: stop_reason=tool_use, 1 tool(s) requested: calendar_check",
+  "[harness/loop.py] iteration 3: stop_reason=tool_use, 1 tool(s) requested: calendar_check",
   "[harness/tools.py] calendar_check(dates=['2026-11-21', '2026-12-05', '2026-11...) -> 3 שורות, 90 תווים",
   "[harness/loop.py] returning 1 tool results in one user message",
-  "[harness/loop.py] iteration 3: stop_reason=tool_use, 1 tool(s) requested: draft_plan",
-  "[harness/tools.py] draft_plan(tasks=[{'ref': 'd1', 'title': 'הכנת סביבת ב..., links=[{'predecessor': '202', 'successor': ...) -> 10 שורות, 433 תווים",
+  "[harness/loop.py] iteration 4: stop_reason=tool_use, 1 tool(s) requested: draft_plan",
+  "[harness/tools.py] draft_plan(tasks=[{'ref': 'd1', 'title': 'הכנת סביבת ב..., links=[{'predecessor': '202', 'successor': ...) -> 10 שורות, 546 תווים",
   "[harness/loop.py] returning 1 tool results in one user message",
-  "[harness/loop.py] stop_reason=end_turn after 4 model calls",
-  "[harness/tokens.py] turn 1: 4 model calls, in=5400 read=0 write=0 out=720 $0.0360 (0.0s)",
+  "[harness/loop.py] stop_reason=end_turn after 5 model calls",
+  "[harness/tokens.py] turn 1: 5 model calls, in=6900 read=0 write=0 out=920 $0.0460 (0.0s)",
   "[harness/main.py] --- turn 2 ---",
-  "[harness/history.py] replaying 8 messages from s1.jsonl",
-  "[harness/compaction.py] ~1298 tokens, under the 2000 threshold - no compaction",
+  "[harness/history.py] replaying 10 messages from s1.jsonl",
+  "[harness/compaction.py] ~1784 tokens, under the 2000 threshold - no compaction",
   "[harness/memory.py] 0 of 0 records relevant to this turn - nothing injected",
   "[harness/context.py] turn context built: 242 chars (without memory records, digest only - no task rows)",
   "[harness/loop.py] iteration 1: stop_reason=tool_use, 1 tool(s) requested: workload",
   "[harness/tools.py] workload(names=['רחל כהן', 'יוסי ברק', 'איתי גולן']) -> 4 שורות, 70 תווים",
   "[harness/loop.py] returning 1 tool results in one user message",
   "[harness/loop.py] iteration 2: stop_reason=tool_use, 1 tool(s) requested: draft_plan",
-  "[harness/tools.py] draft_plan(tasks=[{'ref': 'd1', 'title': 'הכנת סביבת ב..., links=[{'predecessor': '202', 'successor': ...) -> 10 שורות, 435 תווים",
+  "[harness/tools.py] draft_plan(tasks=[{'ref': 'd1', 'title': 'הכנת סביבת ב..., links=[{'predecessor': '202', 'successor': ...) -> 10 שורות, 548 תווים",
   "[harness/loop.py] returning 1 tool results in one user message",
   "[harness/loop.py] stop_reason=end_turn after 3 model calls",
   "[harness/tokens.py] turn 2: 3 model calls, in=3900 read=0 write=0 out=520 $0.0260 (0.0s)",
   "[harness/main.py] --- turn 3 ---",
-  "[harness/history.py] replaying 14 messages from s1.jsonl",
-  "[harness/compaction.py] ~2095 tokens, over the 2000 threshold - compacting",
-  "[harness/history.py] compaction marker appended, 14 messages retired",
+  "[harness/history.py] replaying 16 messages from s1.jsonl",
+  "[harness/compaction.py] ~2633 tokens, over the 2000 threshold - compacting",
+  "[harness/history.py] compaction marker appended, 16 messages retired",
   "[harness/compaction.py] history replaced by a 37-char summary",
   "[harness/memory.py] 0 of 0 records relevant to this turn - nothing injected",
-  "[harness/context.py] turn context built: 182 chars (without memory records, digest only - no task rows)",
+  "[harness/context.py] turn context built: 288 chars (without memory records, digest only - no task rows)",
   "[harness/loop.py] iteration 1: stop_reason=tool_use, 1 tool(s) requested: commit_plan",
-  "[harness/tools.py] commit_plan(draft_id=draft2) -> 1 שורות, 35 תווים",
+  "[harness/tools.py] commit_plan(draft_id=draft2, approve=['d1', 'd2', 'd3']) -> 2 שורות, 49 תווים",
   "[harness/loop.py] returning 1 tool results in one user message",
   "[harness/loop.py] stop_reason=end_turn after 2 model calls",
   "[harness/tokens.py] turn 3: 3 model calls, in=3600 read=0 write=0 out=410 $0.0226 (0.1s)",
   "[harness/main.py] --- turn 4 ---",
   "[harness/history.py] replaying 5 messages from s1.jsonl (after compaction)",
-  "[harness/compaction.py] ~216 tokens, under the 2000 threshold - no compaction",
+  "[harness/compaction.py] ~302 tokens, under the 2000 threshold - no compaction",
   "[harness/memory.py] 0 of 0 records relevant to this turn - nothing injected",
   "[harness/context.py] turn context built: 273 chars (without memory records, digest only - no task rows)",
   "[harness/loop.py] iteration 1: stop_reason=tool_use, 1 tool(s) requested: remember",
@@ -454,7 +458,7 @@
   "[harness/tokens.py] turn 4: 2 model calls, in=2400 read=0 write=0 out=320 $0.0160 (0.0s)",
   "[harness/main.py] --- turn 5 ---",
   "[harness/history.py] replaying 9 messages from s1.jsonl (after compaction)",
-  "[harness/compaction.py] ~469 tokens, under the 2000 threshold - no compaction",
+  "[harness/compaction.py] ~555 tokens, under the 2000 threshold - no compaction",
   "[harness/memory.py] 0 of 1 records relevant to this turn - nothing injected",
   "[harness/context.py] turn context built: 265 chars (without memory records, digest only - no task rows)",
   "[harness/loop.py] iteration 1: stop_reason=tool_use, 1 tool(s) requested: remember",
@@ -466,7 +470,7 @@
   "[harness/main.py] === session s2: שבוע אחרי, מופע חדש של הסוכן ===",
   "[harness/memory.py] profile loaded: 408 chars (frozen into the system prefix)",
   "[harness/caching.py] cache breakpoint on system block 2 (frozen for the session)",
-  "[harness/tools.py] 8 tool schemas sent: search_workspace, workload, calendar_check, history_stats, draft_plan, commit_plan, remember, recall",
+  "[harness/tools.py] 9 tool schemas sent: search_workspace, workload, calendar_check, history_stats, draft_plan, commit_plan, read_transcript, remember, recall",
   "[harness/agent.py] session s2 ready, model claude-opus-5-5, effort medium",
   "[harness/main.py] --- turn 6 ---",
   "[harness/history.py] replaying 0 messages from s2.jsonl",
@@ -477,29 +481,29 @@
   "[harness/tools.py] recall(topic=בדיקת שאלון) -> 1 שורות, 59 תווים",
   "[harness/loop.py] returning 1 tool results in one user message",
   "[harness/loop.py] iteration 2: stop_reason=tool_use, 1 tool(s) requested: draft_plan",
-  "[harness/tools.py] draft_plan(tasks=[{'ref': 'd1', 'title': 'בדיקת שאלון ...) -> 3 שורות, 114 תווים",
+  "[harness/tools.py] draft_plan(tasks=[{'ref': 'd1', 'title': 'בדיקת שאלון ...) -> 3 שורות, 194 תווים",
   "[harness/loop.py] returning 1 tool results in one user message",
   "[harness/loop.py] iteration 3: stop_reason=tool_use, 1 tool(s) requested: commit_plan",
-  "[harness/tools.py] commit_plan(draft_id=draft3) -> 1 שורות, 20 תווים",
+  "[harness/tools.py] commit_plan(draft_id=draft3, approve=['d1']) -> 1 שורות, 20 תווים",
   "[harness/loop.py] returning 1 tool results in one user message",
   "[harness/loop.py] stop_reason=end_turn after 4 model calls",
   "[harness/tokens.py] turn 6: 4 model calls, in=5400 read=0 write=0 out=720 $0.0360 (0.1s)",
   "[harness/main.py] --- turn 7 ---",
   "[harness/history.py] replaying 8 messages from s2.jsonl",
-  "[harness/compaction.py] ~569 tokens, under the 2000 threshold - no compaction",
+  "[harness/compaction.py] ~614 tokens, under the 2000 threshold - no compaction",
   "[harness/memory.py] 1 of 2 records injected: m2(שלב ב)",
   "[harness/context.py] turn context built: 379 chars (with memory records, digest only - no task rows)",
   "[harness/loop.py] iteration 1: stop_reason=tool_use, 1 tool(s) requested: draft_plan",
-  "[harness/tools.py] draft_plan(tasks=[{'ref': 'd1', 'title': 'הכנת מדגם', ...) -> 6 שורות, 366 תווים",
+  "[harness/tools.py] draft_plan(tasks=[{'ref': 'd1', 'title': 'הכנת מדגם', ...) -> 5 שורות, 367 תווים",
   "[harness/loop.py] returning 1 tool results in one user message",
   "[harness/loop.py] iteration 2: stop_reason=tool_use, 1 tool(s) requested: commit_plan",
-  "[harness/tools.py] commit_plan refused: הטיוטה חסומה:\nm2: \"לא פותחים את משימות שלב ב' לפני ינואר 2027\" - והמשימה \"הכנת מדגם\" מתוארכת ל-2026-12-20, לפני 2027-01-01\nm2: \"לא פותחים את משימות שלב ב' לפני ינואר 2027\" - והמשימה \"הדרכת סוקרים\" מתוארכת ל-2026-12-20, לפני 2027-01-01\nהפתרון הוא לשנות את הטיוטה או לבטל את ההחלטה במפורש.",
+  "[harness/tools.py] commit_plan refused: d1: חסומה - m2: \"לא פותחים את משימות שלב ב' לפני ינואר 2027\" - והמשימה \"הכנת מדגם\" מתוארכת ל-2026-12-20, לפני 2027-01-01\nd2: חסומה - m2: \"לא פותחים את משימות שלב ב' לפני ינואר 2027\" - והמשימה \"הדרכת סוקרים\" מתוארכת ל-2026-12-20, לפני 2027-01-01\nכדי להתקדם: לשנות את הטיוטה, לבטל את ההחלטה במפורש, או לאשר משימות אחרות.",
   "[harness/loop.py] returning 1 tool results in one user message",
   "[harness/loop.py] stop_reason=end_turn after 3 model calls",
   "[harness/tokens.py] turn 7: 3 model calls, in=3900 read=0 write=0 out=520 $0.0260 (0.1s)",
   "[harness/main.py] --- turn 8 ---",
   "[harness/history.py] replaying 14 messages from s2.jsonl",
-  "[harness/compaction.py] ~1333 tokens, under the 2000 threshold - no compaction",
+  "[harness/compaction.py] ~1403 tokens, under the 2000 threshold - no compaction",
   "[harness/memory.py] 0 of 2 records relevant to this turn - nothing injected",
   "[harness/context.py] turn context built: 196 chars (without memory records, digest only - no task rows)",
   "[harness/loop.py] iteration 1: stop_reason=tool_use, 1 tool(s) requested: search_workspace",
