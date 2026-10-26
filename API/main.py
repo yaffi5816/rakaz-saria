@@ -99,7 +99,9 @@ def run(scenario: dict, keep_state: bool, client_factory=None) -> dict:
                 **{k: v for k, v in answer["usage"].items() if k != "tools"},
                 "state": checks.snapshot(agent.workspace, memory),
             })
-        say("main.py", f"session {session['id']} done, {agent.compactions} compactions")
+        calendar = {"source": agent.calendar.source, "http_calls": agent.calendar.calls}
+        say("main.py", f"session {session['id']} done, {agent.compactions} compactions, "
+                       f"calendar {calendar['source']} ({calendar['http_calls']} http)")
 
     record = {
         "version": "api",
@@ -108,6 +110,7 @@ def run(scenario: dict, keep_state: bool, client_factory=None) -> dict:
         "scenario": scenario["name"],
         "seconds": round(time.time() - started, 2),
         "turns": turns,
+        "calendar": calendar,
     }
     record["totals"] = _totals(turns)
     record["checks"] = checks.run_all(record, scenario.get("actor", "sarah.avital"))

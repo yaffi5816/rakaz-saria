@@ -84,6 +84,8 @@ async def run(scenario: dict, keep_state: bool) -> dict:
                     "sdk_session_id": result.session_id,
                     "state": checks.snapshot(agent.workspace, memory),
                 })
+            calendar = {"source": agent.ctx.calendar.source,
+                        "http_calls": agent.ctx.calendar.calls}
 
     record = {
         "version": "sdk",
@@ -92,6 +94,7 @@ async def run(scenario: dict, keep_state: bool) -> dict:
         "scenario": scenario["name"],
         "seconds": round(time.time() - started, 2),
         "turns": turns,
+        "calendar": calendar,
     }
     record["totals"] = _totals(turns)
     record["checks"] = checks.run_all(record, scenario.get("actor", "sarah.avital"))

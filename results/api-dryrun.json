@@ -3,7 +3,7 @@
  "model": "claude-opus-5-5",
  "effort": "medium",
  "scenario": "rakaz-8-turns",
- "seconds": 0.34,
+ "seconds": 0.46,
  "turns": [
   {
    "turn": 1,
@@ -88,7 +88,7 @@
    "output_tokens": 410,
    "cache_hit_rate": 0.0,
    "cost_usd": 0.0226,
-   "seconds": 0.04,
+   "seconds": 0.07,
    "state": {
     "agent_task_ids": [
      1000,
@@ -200,7 +200,7 @@
    "output_tokens": 720,
    "cache_hit_rate": 0.0,
    "cost_usd": 0.036,
-   "seconds": 0.08,
+   "seconds": 0.12,
    "state": {
     "agent_task_ids": [
      1000,
@@ -281,7 +281,7 @@
    "output_tokens": 320,
    "cache_hit_rate": 0.0,
    "cost_usd": 0.016,
-   "seconds": 0.01,
+   "seconds": 0.03,
    "state": {
     "agent_task_ids": [
      1000,
@@ -301,6 +301,10 @@
    }
   }
  ],
+ "calendar": {
+  "source": "fixture",
+  "http_calls": 0
+ },
  "totals": {
   "model_calls": 23,
   "input_tokens": 29400,
@@ -308,7 +312,7 @@
   "cache_write_tokens": 0,
   "output_tokens": 3850,
   "cost_usd": 0.1946,
-  "seconds": 0.26,
+  "seconds": 0.35,
   "cache_hit_rate": 0.0
  },
  "checks": [
@@ -345,7 +349,7 @@
   {
    "name": "הכלי החיצוני רץ לפני שהוצעו תאריכים",
    "passed": true,
-   "detail": "כלים בתור 1: search_workspace, search_workspace, calendar_check, draft_plan"
+   "detail": "כלים בתור 1: search_workspace, search_workspace, calendar_check, draft_plan | לוח השנה: fixture, 0 קריאות רשת"
   },
   {
    "name": "הזיכרון append-only לאורך כל הריצה",
@@ -376,17 +380,17 @@
   },
   "api_total": 383,
   "sdk_replacing_lines": {
-   "loop.py": 0,
-   "tools.py": 0,
-   "history.py": 0,
-   "memory.py": 0,
+   "loop.py": 3,
+   "tools.py": 4,
+   "history.py": 1,
+   "memory.py": 2,
    "context.py": 0,
    "compaction.py": 0,
    "caching.py": 0,
-   "tokens.py": 0
+   "tokens.py": 2
   },
-  "sdk_total": 0,
-  "shared_total": 1244
+  "sdk_total": 12,
+  "shared_total": 1264
  },
  "trace": [
   "[harness/main.py] DRY RUN: scripted model, offline calendar, invented token counts",
@@ -437,7 +441,7 @@
   "[harness/tools.py] commit_plan(draft_id=draft2) -> 1 שורות, 35 תווים",
   "[harness/loop.py] returning 1 tool results in one user message",
   "[harness/loop.py] stop_reason=end_turn after 2 model calls",
-  "[harness/tokens.py] turn 3: 3 model calls, in=3600 read=0 write=0 out=410 $0.0226 (0.0s)",
+  "[harness/tokens.py] turn 3: 3 model calls, in=3600 read=0 write=0 out=410 $0.0226 (0.1s)",
   "[harness/main.py] --- turn 4 ---",
   "[harness/history.py] replaying 5 messages from s1.jsonl (after compaction)",
   "[harness/compaction.py] ~216 tokens, under the 2000 threshold - no compaction",
@@ -458,7 +462,7 @@
   "[harness/loop.py] returning 1 tool results in one user message",
   "[harness/loop.py] stop_reason=end_turn after 2 model calls",
   "[harness/tokens.py] turn 5: 2 model calls, in=2400 read=0 write=0 out=320 $0.0160 (0.0s)",
-  "[harness/main.py] session s1 done, 1 compactions",
+  "[harness/main.py] session s1 done, 1 compactions, calendar fixture (0 http)",
   "[harness/main.py] === session s2: שבוע אחרי, מופע חדש של הסוכן ===",
   "[harness/memory.py] profile loaded: 408 chars (frozen into the system prefix)",
   "[harness/caching.py] cache breakpoint on system block 2 (frozen for the session)",
@@ -503,7 +507,7 @@
   "[harness/loop.py] returning 1 tool results in one user message",
   "[harness/loop.py] stop_reason=end_turn after 2 model calls",
   "[harness/tokens.py] turn 8: 2 model calls, in=2400 read=0 write=0 out=320 $0.0160 (0.0s)",
-  "[harness/main.py] session s2 done, 0 compactions"
+  "[harness/main.py] session s2 done, 0 compactions, calendar fixture (0 http)"
  ],
  "dry_run": true
 }

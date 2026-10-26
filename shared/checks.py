@@ -132,7 +132,13 @@ def decision_blocks_contradiction(record: dict, store: LocalStore,
 def external_tool_ran(record: dict, store: LocalStore, memory: MemoryStore) -> tuple[bool, str]:
     """The calendar was actually consulted before dates were proposed."""
     tools = _turn(record, 1).get("tools", [])
-    return "calendar_check" in tools, f"כלים בתור 1: {', '.join(tools) or '(אין)'}"
+    calendar = record.get("calendar") or {}
+    where = calendar.get("source", "?")
+    http = calendar.get("http_calls", 0)
+    return "calendar_check" in tools, (
+        f"כלים בתור 1: {', '.join(tools) or '(אין)'} | לוח השנה: {where}, "
+        f"{http} קריאות רשת"
+    )
 
 
 def memory_is_append_only(record: dict, store: LocalStore, memory: MemoryStore) -> tuple[bool, str]:

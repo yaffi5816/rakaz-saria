@@ -53,18 +53,25 @@ class CalendarService:
         self._days: dict[str, list[dict]] = {}
         self.source = "fixture"
         self.calls = 0
+        # Years this instance has already settled, from the cache file or from
+        # the network. The bundled fixture does NOT count: it covers 2026 and
+        # 2027, so treating it as "we have that year" would mean a measured run
+        # never actually reaches hebcal.com while the report claims it does.
+        self._settled: set[int] = set()
         self._load()
 
     def _load(self) -> None:
-        if self.mode != "offline" and CACHE.exists():
-            try:
-                self._days = json.loads(CACHE.read_text(encoding="utf-8"))
-                self.source = "cache"
-                return
-            except (OSError, json.JSONDecodeError):
-                pass
         self._days = json.loads(FIXTURE.read_text(encoding="utf-8"))
         self.source = "fixture"
+        if self.mode == "offline" or not CACHE.exists():
+            return
+        try:
+            cached = json.loads(CACHE.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            return
+        self._days.update(cached)
+        self.source = "cache"
+        self._settled = {int(day[:4]) for day in cached if day[:4].isdigit()}
 
     def _fetch(self, year: int) -> None:
         """Pull one year from hebcal.com and fold it into the cache on disk."""
@@ -77,29 +84,47 @@ class CalendarService:
         }
         payload = httpx.get(ENDPOINT, params=params, timeout=20.0).json()
         self.calls += 1
+
+        # Built fresh and then merged over, rather than appended to. The fixture
+        # already holds these days, and appending would give every festival two
+        # entries - which nothing would notice until a date reported its holiday
+        # twice.
+        live: dict[str, list[dict]] = {}
         for item in payload.get("items", []):
             day = (item.get("date") or "")[:10]
             if day:
-                self._days.setdefault(day, []).append({
+                live.setdefault(day, []).append({
                     "title": item.get("title"), "yomtov": bool(item.get("yomtov")),
                     "category": item.get("category"), "subcat": item.get("subcat"),
                 })
+        self._days.update(live)
+
+        # Only fetched days reach the cache. Writing the merged dictionary would
+        # put fixture days in there too, and the next run would read the cache,
+        # conclude it already holds that year, and never call out again.
         CACHE.parent.mkdir(parents=True, exist_ok=True)
+        stored = {}
+        if CACHE.exists():
+            try:
+                stored = json.loads(CACHE.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                stored = {}
+        stored.update(live)
         CACHE.write_text(
-            json.dumps(self._days, ensure_ascii=False, sort_keys=True), encoding="utf-8"
+            json.dumps(stored, ensure_ascii=False, sort_keys=True), encoding="utf-8"
         )
         self.source = "live"
 
     def _ensure(self, year: int) -> None:
-        if self.mode == "offline":
+        if self.mode == "offline" or year in self._settled:
             return
-        if any(key.startswith(f"{year}-") for key in self._days):
-            return
+        # Marked settled either way: an unreachable calendar must not stop a
+        # planning session, and it must not be retried on every date either.
+        # The bundled fixture still answers, and self.source says so.
+        self._settled.add(year)
         try:
             self._fetch(year)
         except Exception:
-            # An unreachable calendar must not stop a planning session. The
-            # bundled fixture still answers, and the row says where it came from.
             pass
 
     def day(self, date: datetime.date) -> dict:
