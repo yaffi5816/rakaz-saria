@@ -1,0 +1,886 @@
+{
+ "2026-02-02": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "ט״וּ בִּשְׁבָט",
+   "yomtov": false
+  }
+ ],
+ "2026-03-02": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "עֶרֶב פּוּרִים",
+   "yomtov": false
+  }
+ ],
+ "2026-03-03": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פּוּרִים",
+   "yomtov": false
+  }
+ ],
+ "2026-03-04": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "שׁוּשָׁן פּוּרִים",
+   "yomtov": false
+  }
+ ],
+ "2026-03-28": [
+  {
+   "category": "holiday",
+   "subcat": "modern",
+   "title": "יוֹם הַעֲלִיָּה",
+   "yomtov": false
+  }
+ ],
+ "2026-04-01": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "עֶרֶב פֶּסַח",
+   "yomtov": false
+  }
+ ],
+ "2026-04-02": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח א׳",
+   "yomtov": true
+  }
+ ],
+ "2026-04-03": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח ב׳",
+   "yomtov": true
+  }
+ ],
+ "2026-04-04": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח ג׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2026-04-05": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח ד׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2026-04-06": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח ה׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2026-04-07": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח ו׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2026-04-08": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח ז׳",
+   "yomtov": true
+  }
+ ],
+ "2026-04-09": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח ח׳",
+   "yomtov": true
+  }
+ ],
+ "2026-04-14": [
+  {
+   "category": "holiday",
+   "subcat": "modern",
+   "title": "יוֹם הַשּׁוֹאָה",
+   "yomtov": false
+  }
+ ],
+ "2026-04-21": [
+  {
+   "category": "holiday",
+   "subcat": "modern",
+   "title": "יוֹם הַזִּכָּרוֹן",
+   "yomtov": false
+  }
+ ],
+ "2026-04-22": [
+  {
+   "category": "holiday",
+   "subcat": "modern",
+   "title": "יוֹם הָעַצְמָאוּת",
+   "yomtov": false
+  }
+ ],
+ "2026-05-01": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "פֶּסַח שֵׁנִי",
+   "yomtov": false
+  }
+ ],
+ "2026-05-05": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "ל״ג בָּעוֹמֶר",
+   "yomtov": false
+  }
+ ],
+ "2026-05-15": [
+  {
+   "category": "holiday",
+   "subcat": "modern",
+   "title": "יוֹם יְרוּשָׁלַיִם",
+   "yomtov": false
+  }
+ ],
+ "2026-05-21": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "עֶרֶב שָׁבוּעוֹת",
+   "yomtov": false
+  }
+ ],
+ "2026-05-22": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "שָׁבוּעוֹת א׳",
+   "yomtov": true
+  }
+ ],
+ "2026-05-23": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "שָׁבוּעוֹת ב׳",
+   "yomtov": true
+  }
+ ],
+ "2026-07-22": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "עֶרֶב תִּשְׁעָה בְּאָב",
+   "yomtov": false
+  }
+ ],
+ "2026-07-23": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "תִּשְׁעָה בְּאָב",
+   "yomtov": false
+  }
+ ],
+ "2026-07-29": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "ט״וּ בְּאָב",
+   "yomtov": false
+  }
+ ],
+ "2026-08-14": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "רֹאשׁ הַשָּׁנָה לְמַעְשַׂר בְּהֵמָה",
+   "yomtov": false
+  }
+ ],
+ "2026-09-05": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "סְלִיחוֹת",
+   "yomtov": false
+  }
+ ],
+ "2026-09-11": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "עֶרֶב רֹאשׁ הַשָּׁנָה",
+   "yomtov": false
+  }
+ ],
+ "2026-09-12": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "רֹאשׁ הַשָּׁנָה 5787",
+   "yomtov": true
+  }
+ ],
+ "2026-09-13": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "רֹאשׁ הַשָּׁנָה ב׳",
+   "yomtov": true
+  }
+ ],
+ "2026-09-20": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "עֶרֶב יוֹם כִּפּוּר",
+   "yomtov": false
+  }
+ ],
+ "2026-09-21": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "יוֹם כִּפּוּר",
+   "yomtov": true
+  }
+ ],
+ "2026-09-25": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "עֶרֶב סֻכּוֹת",
+   "yomtov": false
+  }
+ ],
+ "2026-09-26": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "סֻכּוֹת א׳",
+   "yomtov": true
+  }
+ ],
+ "2026-09-27": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "סֻכּוֹת ב׳",
+   "yomtov": true
+  }
+ ],
+ "2026-09-28": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "סֻכּוֹת ג׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2026-09-29": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "סֻכּוֹת ד׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2026-09-30": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "סֻכּוֹת ה׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2026-10-01": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "סֻכּוֹת ו׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2026-10-02": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "סֻכּוֹת ז׳ (הוֹשַׁעְנָא רַבָּה)",
+   "yomtov": false
+  }
+ ],
+ "2026-10-03": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "שְׁמִינִי עֲצֶרֶת",
+   "yomtov": true
+  }
+ ],
+ "2026-10-04": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "שִׂמְחַת תּוֹרָה",
+   "yomtov": true
+  }
+ ],
+ "2026-10-05": [
+  {
+   "category": "holiday",
+   "subcat": "modern",
+   "title": "יוֹם הַזִּכָּרוֹן לְחַלְלֵי מִלְחֶמֶת חַרְבוֹת בַּרְזֶל",
+   "yomtov": false
+  }
+ ],
+ "2026-11-09": [
+  {
+   "category": "holiday",
+   "subcat": "modern",
+   "title": "חַג הַסִּיגְד",
+   "yomtov": false
+  }
+ ],
+ "2026-12-04": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: א׳ נֵר",
+   "yomtov": false
+  }
+ ],
+ "2026-12-05": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: ב׳ נֵרוֹת",
+   "yomtov": false
+  }
+ ],
+ "2026-12-06": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: ג׳ נֵרוֹת",
+   "yomtov": false
+  }
+ ],
+ "2026-12-07": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: ד׳ נֵרוֹת",
+   "yomtov": false
+  }
+ ],
+ "2026-12-08": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: ה׳ נֵרוֹת",
+   "yomtov": false
+  }
+ ],
+ "2026-12-09": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: ו׳ נֵרוֹת",
+   "yomtov": false
+  }
+ ],
+ "2026-12-10": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "חַג הַבָּנוֹת",
+   "yomtov": false
+  },
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: ז׳ נֵרוֹת",
+   "yomtov": false
+  }
+ ],
+ "2026-12-11": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: ח׳ נֵרוֹת",
+   "yomtov": false
+  }
+ ],
+ "2026-12-12": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: יוֹם ח׳",
+   "yomtov": false
+  }
+ ],
+ "2027-01-23": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "ט״וּ בִּשְׁבָט",
+   "yomtov": false
+  }
+ ],
+ "2027-02-21": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "פּוּרִים קָטָן",
+   "yomtov": false
+  }
+ ],
+ "2027-02-22": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "שׁוּשָׁן פּוּרִים קָטָן",
+   "yomtov": false
+  }
+ ],
+ "2027-03-22": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "עֶרֶב פּוּרִים",
+   "yomtov": false
+  }
+ ],
+ "2027-03-23": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פּוּרִים",
+   "yomtov": false
+  }
+ ],
+ "2027-03-24": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "שׁוּשָׁן פּוּרִים",
+   "yomtov": false
+  }
+ ],
+ "2027-04-17": [
+  {
+   "category": "holiday",
+   "subcat": "modern",
+   "title": "יוֹם הַעֲלִיָּה",
+   "yomtov": false
+  }
+ ],
+ "2027-04-21": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "עֶרֶב פֶּסַח",
+   "yomtov": false
+  }
+ ],
+ "2027-04-22": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח א׳",
+   "yomtov": true
+  }
+ ],
+ "2027-04-23": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח ב׳",
+   "yomtov": true
+  }
+ ],
+ "2027-04-24": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח ג׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2027-04-25": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח ד׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2027-04-26": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח ה׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2027-04-27": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח ו׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2027-04-28": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח ז׳",
+   "yomtov": true
+  }
+ ],
+ "2027-04-29": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "פֶּסַח ח׳",
+   "yomtov": true
+  }
+ ],
+ "2027-05-04": [
+  {
+   "category": "holiday",
+   "subcat": "modern",
+   "title": "יוֹם הַשּׁוֹאָה",
+   "yomtov": false
+  }
+ ],
+ "2027-05-11": [
+  {
+   "category": "holiday",
+   "subcat": "modern",
+   "title": "יוֹם הַזִּכָּרוֹן",
+   "yomtov": false
+  }
+ ],
+ "2027-05-12": [
+  {
+   "category": "holiday",
+   "subcat": "modern",
+   "title": "יוֹם הָעַצְמָאוּת",
+   "yomtov": false
+  }
+ ],
+ "2027-05-21": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "פֶּסַח שֵׁנִי",
+   "yomtov": false
+  }
+ ],
+ "2027-05-25": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "ל״ג בָּעוֹמֶר",
+   "yomtov": false
+  }
+ ],
+ "2027-06-04": [
+  {
+   "category": "holiday",
+   "subcat": "modern",
+   "title": "יוֹם יְרוּשָׁלַיִם",
+   "yomtov": false
+  }
+ ],
+ "2027-06-10": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "עֶרֶב שָׁבוּעוֹת",
+   "yomtov": false
+  }
+ ],
+ "2027-06-11": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "שָׁבוּעוֹת א׳",
+   "yomtov": true
+  }
+ ],
+ "2027-06-12": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "שָׁבוּעוֹת ב׳",
+   "yomtov": true
+  }
+ ],
+ "2027-08-11": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "עֶרֶב תִּשְׁעָה בְּאָב",
+   "yomtov": false
+  }
+ ],
+ "2027-08-12": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "תִּשְׁעָה בְּאָב",
+   "yomtov": false
+  }
+ ],
+ "2027-08-18": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "ט״וּ בְּאָב",
+   "yomtov": false
+  }
+ ],
+ "2027-09-03": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "רֹאשׁ הַשָּׁנָה לְמַעְשַׂר בְּהֵמָה",
+   "yomtov": false
+  }
+ ],
+ "2027-09-25": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "סְלִיחוֹת",
+   "yomtov": false
+  }
+ ],
+ "2027-10-01": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "עֶרֶב רֹאשׁ הַשָּׁנָה",
+   "yomtov": false
+  }
+ ],
+ "2027-10-02": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "רֹאשׁ הַשָּׁנָה 5788",
+   "yomtov": true
+  }
+ ],
+ "2027-10-03": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "רֹאשׁ הַשָּׁנָה ב׳",
+   "yomtov": true
+  }
+ ],
+ "2027-10-10": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "עֶרֶב יוֹם כִּפּוּר",
+   "yomtov": false
+  }
+ ],
+ "2027-10-11": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "יוֹם כִּפּוּר",
+   "yomtov": true
+  }
+ ],
+ "2027-10-15": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "עֶרֶב סֻכּוֹת",
+   "yomtov": false
+  }
+ ],
+ "2027-10-16": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "סֻכּוֹת א׳",
+   "yomtov": true
+  }
+ ],
+ "2027-10-17": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "סֻכּוֹת ב׳",
+   "yomtov": true
+  }
+ ],
+ "2027-10-18": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "סֻכּוֹת ג׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2027-10-19": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "סֻכּוֹת ד׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2027-10-20": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "סֻכּוֹת ה׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2027-10-21": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "סֻכּוֹת ו׳ (חוה״מ)",
+   "yomtov": false
+  }
+ ],
+ "2027-10-22": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "סֻכּוֹת ז׳ (הוֹשַׁעְנָא רַבָּה)",
+   "yomtov": false
+  }
+ ],
+ "2027-10-23": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "שְׁמִינִי עֲצֶרֶת",
+   "yomtov": true
+  }
+ ],
+ "2027-10-24": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "שִׂמְחַת תּוֹרָה",
+   "yomtov": true
+  }
+ ],
+ "2027-10-25": [
+  {
+   "category": "holiday",
+   "subcat": "modern",
+   "title": "יוֹם הַזִּכָּרוֹן לְחַלְלֵי מִלְחֶמֶת חַרְבוֹת בַּרְזֶל",
+   "yomtov": false
+  }
+ ],
+ "2027-11-29": [
+  {
+   "category": "holiday",
+   "subcat": "modern",
+   "title": "חַג הַסִּיגְד",
+   "yomtov": false
+  }
+ ],
+ "2027-12-24": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: א׳ נֵר",
+   "yomtov": false
+  }
+ ],
+ "2027-12-25": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: ב׳ נֵרוֹת",
+   "yomtov": false
+  }
+ ],
+ "2027-12-26": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: ג׳ נֵרוֹת",
+   "yomtov": false
+  }
+ ],
+ "2027-12-27": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: ד׳ נֵרוֹת",
+   "yomtov": false
+  }
+ ],
+ "2027-12-28": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: ה׳ נֵרוֹת",
+   "yomtov": false
+  }
+ ],
+ "2027-12-29": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: ו׳ נֵרוֹת",
+   "yomtov": false
+  }
+ ],
+ "2027-12-30": [
+  {
+   "category": "holiday",
+   "subcat": "minor",
+   "title": "חַג הַבָּנוֹת",
+   "yomtov": false
+  },
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: ז׳ נֵרוֹת",
+   "yomtov": false
+  }
+ ],
+ "2027-12-31": [
+  {
+   "category": "holiday",
+   "subcat": "major",
+   "title": "חֲנוּכָּה: ח׳ נֵרוֹת",
+   "yomtov": false
+  }
+ ]
+}

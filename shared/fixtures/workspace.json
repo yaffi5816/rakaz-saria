@@ -1,0 +1,58 @@
+{
+  "_comment": "Invented data. No person, project or budget here corresponds to anything real; the shapes follow the task application's schema so the HTTP client and this store answer the same questions.",
+  "today": "2026-10-26",
+  "actor": "sarah.avital",
+  "departments": [
+    {"id": 1, "name": "אגף סקרים"},
+    {"id": 2, "name": "אגף מתודולוגיה"},
+    {"id": 3, "name": "אגף מערכות מידע"}
+  ],
+  "users": [
+    {"id": 1, "ad_username": "sarah.avital", "display_name": "שרה אביטל", "email": "sarah.avital@example.gov.il", "department_id": 1, "is_admin": false, "views_organisation": false},
+    {"id": 2, "ad_username": "rachel.cohen", "display_name": "רחל כהן", "email": "rachel.cohen@example.gov.il", "department_id": 1, "is_admin": false, "views_organisation": false},
+    {"id": 3, "ad_username": "yossi.barak", "display_name": "יוסי ברק", "email": "yossi.barak@example.gov.il", "department_id": 1, "is_admin": false, "views_organisation": false},
+    {"id": 4, "ad_username": "noa.levi", "display_name": "נועה לוי", "email": "noa.levi@example.gov.il", "department_id": 2, "is_admin": false, "views_organisation": false},
+    {"id": 5, "ad_username": "avi.mizrahi", "display_name": "אבי מזרחי", "email": "avi.mizrahi@example.gov.il", "department_id": 2, "is_admin": false, "views_organisation": false},
+    {"id": 6, "ad_username": "dana.shapira", "display_name": "דנה שפירא", "email": "dana.shapira@example.gov.il", "department_id": 3, "is_admin": false, "views_organisation": false},
+    {"id": 7, "ad_username": "itay.golan", "display_name": "איתי גולן", "email": "itay.golan@example.gov.il", "department_id": 1, "is_admin": false, "views_organisation": false}
+  ],
+  "projects": [
+    {"id": 1, "name": "סקר כוח אדם 2026", "department_id": 1, "manager_id": 1, "budget_total": 450000, "status": "in_progress", "start_date": "2026-01-01", "end_date": "2026-12-31"},
+    {"id": 2, "name": "סקר הבריאות הלאומי", "department_id": 1, "manager_id": 1, "budget_total": 280000, "status": "in_progress", "start_date": "2026-06-01", "end_date": "2027-06-30"},
+    {"id": 3, "name": "מדד המחירים - שדרוג איסוף", "department_id": 3, "manager_id": 6, "budget_total": 120000, "status": "in_progress", "start_date": "2026-09-01", "end_date": "2027-03-31"}
+  ],
+  "task_groups": [
+    {"id": 1, "project_id": 1, "name": "הכנה", "position": 1},
+    {"id": 2, "project_id": 1, "name": "שדה", "position": 2},
+    {"id": 3, "project_id": 1, "name": "עיבוד", "position": 3},
+    {"id": 4, "project_id": 2, "name": "הכנה", "position": 1},
+    {"id": 5, "project_id": 2, "name": "שדה", "position": 2}
+  ],
+  "tasks": [
+    {"id": 101, "title": "הכנת קובץ דגימה", "department_id": 1, "project_id": 1, "group_id": 1, "status": "in_progress", "start_date": "2026-10-12", "due_date": "2026-10-21", "completed_at": null, "owners": [2], "partners": [4], "created_by": 1},
+    {"id": 102, "title": "ניקוי רשימת כתובות", "department_id": 1, "project_id": 1, "group_id": 1, "status": "new", "start_date": null, "due_date": "2026-11-05", "completed_at": null, "owners": [3], "partners": [], "created_by": 1},
+    {"id": 103, "title": "הדפסת שאלונים", "department_id": 1, "project_id": 1, "group_id": 1, "status": "new", "start_date": null, "due_date": "2026-11-16", "completed_at": null, "owners": [7], "partners": [], "created_by": 1},
+    {"id": 104, "title": "הדרכת סוקרים", "department_id": 1, "project_id": 1, "group_id": 2, "status": "new", "start_date": null, "due_date": "2026-11-26", "completed_at": null, "owners": [2], "partners": [], "created_by": 1},
+    {"id": 105, "title": "פתיחת שדה", "department_id": 1, "project_id": 1, "group_id": 2, "status": "new", "start_date": null, "due_date": "2026-12-10", "completed_at": null, "owners": [2], "partners": [3], "created_by": 1},
+    {"id": 106, "title": "אישור ועדת היגוי לשאלון הסופי", "department_id": 1, "project_id": 1, "group_id": 1, "status": "stuck", "start_date": null, "due_date": "2026-10-15", "completed_at": null, "owners": [1], "partners": [], "created_by": 1},
+    {"id": 107, "title": "בדיקת שאלון גל א", "department_id": 1, "project_id": 1, "group_id": 1, "status": "done", "start_date": "2026-08-30", "due_date": "2026-09-10", "completed_at": "2026-09-21T09:40:00+03:00", "owners": [4], "partners": [5], "created_by": 1},
+    {"id": 108, "title": "עדכון מסמך המתודולוגיה", "department_id": 1, "project_id": 1, "group_id": 1, "status": "done", "start_date": null, "due_date": "2026-08-20", "completed_at": "2026-08-27T14:05:00+03:00", "owners": [5], "partners": [], "created_by": 1},
+    {"id": 109, "title": "תיאום מול לשכות המחוז", "department_id": 1, "project_id": 1, "group_id": 2, "status": "in_progress", "start_date": "2026-10-19", "due_date": "2026-11-03", "completed_at": null, "owners": [2], "partners": [], "created_by": 1},
+    {"id": 110, "title": "הזמנת ציוד לסוקרים", "department_id": 1, "project_id": 1, "group_id": 2, "status": "new", "start_date": null, "due_date": "2026-11-10", "completed_at": null, "owners": [2], "partners": [], "created_by": 1},
+    {"id": 111, "title": "דוח ביניים להנהלה", "department_id": 1, "project_id": 1, "group_id": 3, "status": "new", "start_date": null, "due_date": "2026-11-20", "completed_at": null, "owners": [2], "partners": [], "created_by": 1},
+    {"id": 112, "title": "בדיקת שאלון פיילוט", "department_id": 1, "project_id": 1, "group_id": 1, "status": "done", "start_date": null, "due_date": "2026-06-10", "completed_at": "2026-06-18T11:00:00+03:00", "owners": [4], "partners": [5], "created_by": 1},
+    {"id": 201, "title": "בדיקת שאלון מודול תזונה", "department_id": 1, "project_id": 2, "group_id": 4, "status": "done", "start_date": null, "due_date": "2026-09-30", "completed_at": "2026-10-09T16:20:00+03:00", "owners": [4], "partners": [5], "created_by": 1},
+    {"id": 202, "title": "גיוס סוקרים", "department_id": 1, "project_id": 2, "group_id": 4, "status": "in_progress", "start_date": "2026-10-05", "due_date": "2026-11-12", "completed_at": null, "owners": [3], "partners": [], "created_by": 1},
+    {"id": 203, "title": "אפיון מסך הזנה", "department_id": 1, "project_id": 2, "group_id": 4, "status": "new", "start_date": null, "due_date": "2026-11-24", "completed_at": null, "owners": [6], "partners": [], "created_by": 1},
+    {"id": 204, "title": "בדיקת שאלון מודול פעילות גופנית", "department_id": 1, "project_id": 2, "group_id": 4, "status": "done", "start_date": null, "due_date": "2026-07-15", "completed_at": "2026-07-20T10:15:00+03:00", "owners": [4], "partners": [5], "created_by": 1},
+    {"id": 205, "title": "הכנת מדריך סוקר", "department_id": 1, "project_id": 2, "group_id": 5, "status": "new", "start_date": null, "due_date": "2026-12-03", "completed_at": null, "owners": [7], "partners": [], "created_by": 1},
+    {"id": 301, "title": "שדרוג טפסי איסוף", "department_id": 3, "project_id": 3, "group_id": null, "status": "in_progress", "start_date": null, "due_date": "2026-11-18", "completed_at": null, "owners": [6], "partners": [], "created_by": 6},
+    {"id": 302, "title": "בדיקות קבלה לטפסים", "department_id": 3, "project_id": 3, "group_id": null, "status": "new", "start_date": null, "due_date": "2026-12-15", "completed_at": null, "owners": [6], "partners": [], "created_by": 6}
+  ],
+  "dependencies": [[101, 102], [102, 103], [103, 104], [104, 105]],
+  "payments": [
+    {"id": 1, "project_id": 1, "amount": 118000, "paid_at": "2026-03-10", "description": "הדפסת שאלונים - מקדמה"},
+    {"id": 2, "project_id": 1, "amount": 96000, "paid_at": "2026-07-02", "description": "שכר סוקרים גל א"},
+    {"id": 3, "project_id": 2, "amount": 40000, "paid_at": "2026-08-15", "description": "ייעוץ מתודולוגי"}
+  ]
+}

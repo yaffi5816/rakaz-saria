@@ -1,0 +1,13 @@
+# Pinned, because the comparison rules require it: if the two versions ran on
+# different library versions, or the same version ran on two different days
+# against different ones, the numbers in REPORT.md would be measuring the
+# libraries as much as the harnesses.
+#
+# anthropic is 2.x, which brings httpx2 along with it. httpx is pinned too and
+# separately, because shared/hebcal.py and shared/http_client.py use it
+# directly and must not silently follow whatever anthropic depends on.
+
+anthropic==2.3.0
+claude-agent-sdk==0.2.174
+httpx==0.28.1
+pytest==9.0.2

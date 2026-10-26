@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Runtime state. Rebuilt from shared/fixtures at the start of every run, so a
+# committed copy would only ever be one run's leftovers.
+state/
+
+# What the agent learned. memory/profile.md IS committed - it is the briefing
+# both versions start from - but the conventions file is written during a run
+# and reset before the next one.
+memory/conventions.jsonl
+
+# results/ is committed on purpose: api.json and sdk.json are the deliverable.
