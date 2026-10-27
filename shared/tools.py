@@ -19,6 +19,7 @@ import datetime
 from dataclasses import dataclass
 from typing import Any, Callable
 
+from shared import audio
 from shared import plan as planning
 from shared import transcript
 from shared.hebcal import CalendarService
@@ -166,20 +167,35 @@ def commit_plan(ctx: Context, args: dict) -> str:
     return f"נוצרו {len(created)} משימות: {ids}{waiting}{tail}"
 
 
+READABLE = transcript.SUFFIXES | audio.AUDIO_SUFFIXES
+
+
 def read_transcript(ctx: Context, args: dict) -> str:
     name = (args.get("file") or "").strip()
     if not name:
-        return "תמלולים זמינים: " + (", ".join(transcript.available()) or "(אין)")
+        files = transcript.available(READABLE)
+        return "קבצים זמינים: " + (", ".join(files) or "(אין)")
     try:
-        text, report = transcript.read(name)
-    except (FileNotFoundError, ValueError) as error:
+        path = transcript.resolve(name, READABLE)
+        note = ""
+        if audio.is_audio(path):
+            # A recording is transcribed first, and the agent is told so: it
+            # must never report hearing a meeting it only ever read.
+            path, said = audio.transcribe_to_vtt(path)
+            how = f", {said['segments']} קטעים" if said["segments"] else ", מהמטמון"
+            note = (
+                f"הקלטה {said['source']} תומללה ({said['engine']}{how}). "
+                "בתמלול מהקלטה אין שמות דוברים - הייחוס מגיע מהדברים עצמם.\n"
+            )
+        text, report = transcript.read(str(path))
+    except (FileNotFoundError, ValueError, RuntimeError) as error:
         raise ToolError(str(error)) from error
     header = (
         f"{report['file']} | {report['cues']} קטעים | "
         f"דוברים: {', '.join(report['speakers']) or 'לא מזוהים'} | "
         f"{report['chars_in']}->{report['chars_out']} תווים"
     )
-    return f"{header}\n---\n{text}"
+    return f"{note}{header}\n---\n{text}"
 
 
 def remember(ctx: Context, args: dict) -> str:
@@ -349,8 +365,9 @@ TOOLS: list[Tool] = [
     Tool(
         name="read_transcript",
         description=(
-            "קריאת תמלול ישיבה מקובץ (vtt/txt/md/srt), כמו שטימס מייצר אחרי הקלטה. "
-            "בלי file מחזיר את רשימת התמלולים הזמינים. חותמות הזמן מוסרות."
+            "קריאת ישיבה מקובץ. תמלול (vtt/txt/md/srt) נקרא ישירות; הקלטה "
+            "(m4a/mp3/wav/opus ועוד) מתומללת אוטומטית ואז נקראת - זה לוקח זמן, "
+            "והתוצאה נשמרת כך שקריאה חוזרת מיידית. בלי file מחזיר את הרשימה הזמינה."
         ),
         input_schema={
             "type": "object",

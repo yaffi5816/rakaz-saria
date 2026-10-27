@@ -1,0 +1,17 @@
+# Only needed to upload a recording instead of a transcript, and only for the
+# local engine (RAKAZ_STT=local). Kept out of requirements.txt on purpose:
+# nothing in the measured runs or in the test suite imports it, so the two
+# versions of the agent stay comparable on the same short list of libraries.
+#
+#     pip install -r requirements-audio.txt
+#
+# Two things to expect the first time. The package pulls CTranslate2 and a
+# bundle of ONNX runtime pieces - a few hundred megabytes - and then the model
+# itself downloads on first use: about 1.5 GB for medium, 3 GB for large-v3.
+# On a filtered connection, start it when you have the afternoon.
+#
+# RAKAZ_STT=server needs none of this: it posts the file to a transcription
+# service on your own network and only httpx is involved, which is already
+# pinned in requirements.txt.
+
+faster-whisper==1.2.1

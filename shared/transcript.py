@@ -39,17 +39,21 @@ _SPEAKER = re.compile(r"^<v\s+([^>]+)>(.*)$")
 _TAG = re.compile(r"</?[a-zA-Z][^>]*>")
 
 
-def resolve(given: str) -> Path:
+def resolve(given: str, suffixes: set[str] | None = None) -> Path:
     """Turn a path from a tool call into a file we are willing to open.
 
     Input:
         given: whatever the model passed - a bare name, or a path.
+        suffixes: what counts as readable. Defaults to the text transcripts;
+            the audio path passes a wider set, because a recording is resolved
+            here first and transcribed afterwards.
 
     Output: the resolved file.
 
     Raises FileNotFoundError when it does not exist, and ValueError when it
     sits outside the meeting folders or carries an extension this cannot read.
     """
+    allowed = suffixes or SUFFIXES
     candidate = Path(given.strip().strip('"'))
     tries = [candidate] if candidate.is_absolute() else [root / candidate for root in ALLOWED_ROOTS]
     for path in tries:
@@ -57,10 +61,9 @@ def resolve(given: str) -> Path:
         if not any(_within(resolved, root) for root in ALLOWED_ROOTS):
             continue
         if resolved.exists():
-            if resolved.suffix.lower() not in SUFFIXES:
+            if resolved.suffix.lower() not in allowed:
                 raise ValueError(
-                    f"{resolved.name}: אפשר לקרוא רק {', '.join(sorted(SUFFIXES))}. "
-                    "הקלטה צריכה תמלול - Teams מייצר אותו אוטומטית."
+                    f"{resolved.name}: אפשר לקרוא רק {', '.join(sorted(allowed))}."
                 )
             return resolved
     raise FileNotFoundError(
@@ -76,11 +79,12 @@ def _within(path: Path, root: Path) -> bool:
     return True
 
 
-def available() -> list[str]:
+def available(suffixes: set[str] | None = None) -> list[str]:
+    allowed = suffixes or SUFFIXES
     names = []
     for root in ALLOWED_ROOTS:
         if root.exists():
-            names += sorted(p.name for p in root.iterdir() if p.suffix.lower() in SUFFIXES)
+            names += sorted(p.name for p in root.iterdir() if p.suffix.lower() in allowed)
     return names
 
 
