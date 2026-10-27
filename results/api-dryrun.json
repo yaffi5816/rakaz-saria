@@ -3,7 +3,7 @@
  "model": "claude-opus-5-5",
  "effort": "medium",
  "scenario": "rakaz-8-turns",
- "seconds": 0.48,
+ "seconds": 0.46,
  "turns": [
   {
    "turn": 1,
@@ -62,7 +62,7 @@
    "output_tokens": 520,
    "cache_hit_rate": 0.0,
    "cost_usd": 0.026,
-   "seconds": 0.04,
+   "seconds": 0.03,
    "state": {
     "agent_task_ids": [],
     "memory_ids": [],
@@ -158,7 +158,7 @@
    "output_tokens": 320,
    "cache_hit_rate": 0.0,
    "cost_usd": 0.016,
-   "seconds": 0.04,
+   "seconds": 0.05,
    "state": {
     "agent_task_ids": [
      1000,
@@ -199,7 +199,7 @@
    "output_tokens": 720,
    "cache_hit_rate": 0.0,
    "cost_usd": 0.036,
-   "seconds": 0.09,
+   "seconds": 0.08,
    "state": {
     "agent_task_ids": [
      1000,
@@ -239,7 +239,7 @@
    "output_tokens": 520,
    "cache_hit_rate": 0.0,
    "cost_usd": 0.026,
-   "seconds": 0.07,
+   "seconds": 0.03,
    "state": {
     "agent_task_ids": [
      1000,
@@ -308,7 +308,7 @@
   "cache_write_tokens": 0,
   "output_tokens": 4050,
   "cost_usd": 0.2046,
-  "seconds": 0.38,
+  "seconds": 0.33,
   "cache_hit_rate": 0.0
  },
  "checks": [
@@ -500,7 +500,7 @@
   "[harness/tools.py] commit_plan refused: d1: חסומה - m2: \"לא פותחים את משימות שלב ב' לפני ינואר 2027\" - והמשימה \"הכנת מדגם\" מתוארכת ל-2026-12-20, לפני 2027-01-01\nd2: חסומה - m2: \"לא פותחים את משימות שלב ב' לפני ינואר 2027\" - והמשימה \"הדרכת סוקרים\" מתוארכת ל-2026-12-20, לפני 2027-01-01\nכדי להתקדם: לשנות את הטיוטה, לבטל את ההחלטה במפורש, או לאשר משימות אחרות.",
   "[harness/loop.py] returning 1 tool results in one user message",
   "[harness/loop.py] stop_reason=end_turn after 3 model calls",
-  "[harness/tokens.py] turn 7: 3 model calls, in=3900 read=0 write=0 out=520 $0.0260 (0.1s)",
+  "[harness/tokens.py] turn 7: 3 model calls, in=3900 read=0 write=0 out=520 $0.0260 (0.0s)",
   "[harness/main.py] --- turn 8 ---",
   "[harness/history.py] replaying 14 messages from s2.jsonl",
   "[harness/compaction.py] ~1403 tokens, under the 2000 threshold - no compaction",
