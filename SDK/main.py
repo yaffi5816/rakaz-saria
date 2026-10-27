@@ -53,6 +53,7 @@ async def run(scenario: dict, keep_state: bool) -> dict:
     started = time.time()
     turns: list[dict] = []
     memory = MemoryStore()
+    calendar = {"source": "?", "http_calls": 0}
 
     for session in scenario["sessions"]:
         print(f"=== session {session['id']}: {session.get('title', '')} ===", flush=True)
@@ -84,8 +85,9 @@ async def run(scenario: dict, keep_state: bool) -> dict:
                     "sdk_session_id": result.session_id,
                     "state": checks.snapshot(agent.workspace, memory),
                 })
-            calendar = {"source": agent.ctx.calendar.source,
-                        "http_calls": agent.ctx.calendar.calls}
+            calendar["http_calls"] += agent.ctx.calendar.calls
+            if agent.ctx.calendar.calls or calendar["source"] == "?":
+                calendar["source"] = agent.ctx.calendar.source
 
     record = {
         "version": "sdk",

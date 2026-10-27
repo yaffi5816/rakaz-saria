@@ -79,6 +79,10 @@ def run(scenario: dict, keep_state: bool, client_factory=None) -> dict:
     started = time.time()
     turns: list[dict] = []
     memory = MemoryStore()
+    # Accumulated across sessions. Session 1 goes to the network and session 2
+    # reads the cache it left, so the last session's view of the calendar is
+    # not the run's.
+    calendar = {"source": "?", "http_calls": 0}
 
     for session in scenario["sessions"]:
         say("main.py", f"=== session {session['id']}: {session.get('title', '')} ===")
@@ -99,7 +103,9 @@ def run(scenario: dict, keep_state: bool, client_factory=None) -> dict:
                 **{k: v for k, v in answer["usage"].items() if k != "tools"},
                 "state": checks.snapshot(agent.workspace, memory),
             })
-        calendar = {"source": agent.calendar.source, "http_calls": agent.calendar.calls}
+        calendar["http_calls"] += agent.calendar.calls
+        if agent.calendar.calls or calendar["source"] == "?":
+            calendar["source"] = agent.calendar.source
         say("main.py", f"session {session['id']} done, {agent.compactions} compactions, "
                        f"calendar {calendar['source']} ({calendar['http_calls']} http)")
 
@@ -157,6 +163,11 @@ def main() -> int:
 
         factory = client_factory()
         say("main.py", "DRY RUN: scripted model, offline calendar, invented token counts")
+
+    if not args.fake:
+        from API.agent import check_credentials
+
+        check_credentials()
 
     record = run(scenario, keep_state=args.keep_state, client_factory=factory)
     record["dry_run"] = bool(args.fake)

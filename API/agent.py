@@ -120,13 +120,44 @@ class Rakaz:
         }
 
 
+CREDENTIALS_HELP = """גרסת ה-API לא מצאה אישור לדבר עם המודל.
+
+שתי דרכים, ושתיהן בטרמינל בלבד - לעולם לא בקוד ולא ב-git:
+
+  1. מפתח מ-Claude Console (מה שהמשימה מבקשת):
+         export ANTHROPIC_API_KEY=sk-ant-...        (bash)
+         $env:ANTHROPIC_API_KEY = "sk-ant-..."      (PowerShell)
+
+  2. פרופיל התחברות, אם מותקן אצלך ה-CLI של Anthropic:
+         ant auth login
+     ואז להריץ בלי להגדיר מפתח כלל.
+
+גרסת ה-SDK לא צריכה אף אחת מהשתיים - היא רצה על ה-login של Claude Code."""
+
+
 def _default_client():
     """Build the real API client, imported here so the suite never needs it."""
     import anthropic
 
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        raise SystemExit(
-            "ANTHROPIC_API_KEY לא מוגדר. גרסת ה-API צריכה מפתח מ-Claude Console,\n"
-            "שמוגדר כמשתנה סביבה בטרמינל בלבד:  export ANTHROPIC_API_KEY=sk-ant-..."
-        )
     return anthropic.Anthropic()
+
+
+def check_credentials() -> None:
+    """Fail before anything is deleted, rather than after.
+
+    Purpose: a run starts by wiping the workspace, the memory and the
+    transcripts, and only then builds a client. Without this, a missing key
+    costs the previous run's state and gives a traceback in exchange. The probe
+    is messages.count_tokens, which is free and asks the server the one
+    question that matters: does this machine have an identity.
+
+    Also deliberately NOT a check that ANTHROPIC_API_KEY is set. A login
+    profile is a perfectly good credential, and a guard that insists on the
+    environment variable would refuse a setup that works.
+    """
+    try:
+        _default_client().messages.count_tokens(
+            model=MODEL, messages=[{"role": "user", "content": "בדיקה"}]
+        )
+    except Exception as error:  # noqa: BLE001 - every auth failure reads the same here
+        raise SystemExit(f"{CREDENTIALS_HELP}\n\n({type(error).__name__}: {error})") from error
